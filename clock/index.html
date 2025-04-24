@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="clock">
+            <div class="clockface">
+                <div class="hand hr-hand">
+                </div>
+                <div class="hand min-hand">
+                </div>
+                <div class="hand sec-hand">
+                </div>
+            </div>
+        </div>
+        <script>
+            function setTime() {
+                const date = new Date();
+                const second = ((date.getSeconds() / 60) * 360)  + 90;
+                document.querySelector('.sec-hand').style.transform = `rotate(${second}deg)`;
+                const min =  ((date.getMinutes() / 60) * 360) + ((second/60)*6) + 90;
+                document.querySelector('.min-hand').style.transform =  `rotate(${min}deg)`;
+                const hr =  ((date.getHours() / 12) * 360) + ((date.getMinutes()/60)*30) + 90;                ;
+                document.querySelector('.hr-hand').style.transform =  `rotate(${hr}deg)`;
+                // console.log(date.getSeconds());
+            }
+
+            setInterval(setTime, 1000);
+            setTime();
+        </script>
+    </body>
+</html>
